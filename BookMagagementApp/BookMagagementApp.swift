@@ -1,5 +1,5 @@
 //
-//  BookMagagementAppApp.swift
+//  BookMagagementApp.swift
 //  BookMagagementApp
 //
 //  Created by Zhixuan Duan on 2024/4/28.
@@ -8,10 +8,10 @@
 import SwiftUI
 
 @main
-struct BookMagagementAppApp: App {
+struct BookMagagementApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            HomeView()
         }
     }
 }
