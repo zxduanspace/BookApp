@@ -13,9 +13,11 @@ struct BookListView: View {
     var body: some View {
         NavigationView {
             List {
-                ForEach(bookViewModel.bookList) { item in
-                    NavigationLink(item.title) {
+                ForEach(bookViewModel.bookList) { book in
+                    NavigationLink {
                         EmptyView()
+                    } label: {
+                        BookItemView(bookModel: book)
                     }
                 }
             }
