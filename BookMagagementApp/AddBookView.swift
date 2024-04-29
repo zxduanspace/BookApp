@@ -8,8 +8,9 @@
 import SwiftUI
 
 struct AddBookView: View {
+    @StateObject var bookViewModel: BookViewModel
     @State var bookModel: BookModel = BookModel(id: 0, title: "", author: "", publicationYear: "", isbn: "")
-
+    
     var body: some View {
         VStack(alignment: .center) {
             Text("Add Book")
@@ -33,7 +34,7 @@ struct AddBookView: View {
                 }
             }
             Button {
-                    
+                bookViewModel.createBook(book: bookModel)
             } label: {
                 Text("Create Book")
             }
@@ -41,6 +42,3 @@ struct AddBookView: View {
     }
 }
 
-#Preview {
-    AddBookView()
-}

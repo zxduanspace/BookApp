@@ -14,9 +14,9 @@ struct BookListView: View {
     var body: some View {
         NavigationView {
             List {
-                ForEach(bookViewModel.bookList) { book in
+                ForEach(bookViewModel.bookList, id: \.self) { book in
                     NavigationLink {
-                        BookDetailView(bookModel: $selectedBook)
+                        BookDetailView(bookViewModel: bookViewModel, bookModel: $selectedBook)
                     } label: {
                         BookItemView(bookModel: book)
                     }
@@ -25,11 +25,14 @@ struct BookListView: View {
                     }
                 }
             }
+            .onAppear() {
+                bookViewModel.getAllBooks()
+            }
             .navigationTitle("Book Management")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 NavigationLink {
-                    AddBookView()
+                    AddBookView(bookViewModel: bookViewModel)
                 } label: {
                     Image(systemName: "plus.circle")
                 }

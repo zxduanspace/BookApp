@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct BookDetailView: View {
+    @StateObject var bookViewModel: BookViewModel
     @Binding var bookModel: BookModel
     
     var body: some View {
@@ -35,19 +36,22 @@ struct BookDetailView: View {
             HStack(alignment: .center) {
                 Spacer()
                 Button {
-                        
+                    bookViewModel.updateBook(book: bookModel)
                 } label: {
                     Text("Save")
                 }
                 Spacer()
                 Button {
-                        
+                    bookViewModel.deleteBook(id: bookModel.id)
                 } label: {
                     Text("Delete")
                 }
                 .foregroundColor(.red)
                 Spacer()
             }
+        }
+        .onAppear() {
+            bookViewModel.getBookById(id: bookModel.id)
         }
     }
 }
